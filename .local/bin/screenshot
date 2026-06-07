@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# 1. Definir y crear la ruta si no existe
+DIR="$HOME/pictures/screenshots"
+mkdir -p "$DIR"
+
+# 2. Definir el nombre del archivo con la fecha y hora exacta
+FILE="$DIR/captura_$(date +%Y-%m-%d_%H-%M-%S).png"
+
+# 3. Congelar la pantalla, seleccionar área (slurp), capturar (grim), guardar y copiar (wl-copy)
+grim -g "$(slurp)" - | tee "$FILE" | wl-copy
+
+# 4. Enviar una notificación con la miniatura de la captura usando swaync
+notify-send "Captura de pantalla" "Guardada en $FILE y copiada al portapapeles" -i "$FILE"

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# 1. Directorio de destino
+DIR="$HOME/pictures/screenshots"
+mkdir -p "$DIR"
+
+# 2. Nombre del archivo
+FILE="$DIR/captura_completa_$(date +%Y-%m-%d_%H-%M-%S).png"
+
+# 3. Capturar toda la pantalla (grim sin argumentos), guardar y copiar
+grim - | tee "$FILE" | wl-copy
+
+# 4. Enviar notificación
+notify-send "Pantalla Completa" "Guardada en $FILE y copiada al portapapeles" -i "$FILE"

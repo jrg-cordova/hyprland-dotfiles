@@ -1,0 +1,106 @@
+{
+
+"layer": "bottom",
+"exclusive": true,
+"passthrough": false,
+"position": "top",
+"spacing": 3,
+"fixed-center": true,
+"ipc": true,
+"margin-top": 5,
+"margin-left": 10,
+"margin-right": 10,
+
+"modules-left": [
+	"custom/launcher",
+	"custom/separator",
+	"mpris"
+],
+
+"modules-center": [
+	"hyprland/workspaces"
+],
+
+"modules-right": [
+	"custom/recording",
+	"tray",
+	"custom/separator",
+	"pulseaudio",
+	"custom/separator",
+	"network",
+	"custom/separator",
+	"clock",
+	"custom/separator",
+	"custom/powermenu"
+],
+
+"custom/separator": {
+		"format": " ",
+		"interval": "once",
+		"tooltip": false
+},
+
+"custom/recording": {
+		"format": "{}",
+		"return-type": "json",
+		"interval": 1,
+		"exec": "~/.config/waybar/scripts/recording.sh",
+		"on-click": "~/.config/hypr/scripts/record-toggle.sh",
+		"tooltip": true
+},
+
+"custom/powermenu": {
+		"format": "  ",
+		"icon-size": 20,
+		"tooltip": false,
+		"on-click": "~/.config/waybar/scripts/powerbutton.sh"
+},
+"clock": {
+	"format": "{:%I:%M %p}",
+	"tooltip": false
+},
+"hyprland/workspaces": {
+	"disable-scrooll": false,
+	"all-outputs": true,
+        "active-only": false,
+        "on-click": "activate",
+	"format": "{icon}",
+	"format-icons": {
+		"active": "",
+		"default": "",
+		"urgent": ""
+	},
+	"persistent-workspaces": {
+        "*": 5
+        }
+},
+
+"network": {
+	"format-ethernet": " 󰈀 ",
+	"format-disconnected": " 󰖪 ",
+	"on-click": "nm-connection-editor"
+},
+
+"custom/launcher": {
+        "format": "  ",
+        "on-click": "rofi -show drun",
+        "tooltip": false
+},
+
+"pulseaudio": {
+	"format": "{icon} {volume}",
+	"format-bluetooth": "{icon} 󰂯",
+	"format-muted": "󰝟",
+	"format-icons": {
+	"default": [
+		"",
+		"",
+		""
+	]
+	},
+	"scroll-step": 1,
+	"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toogle",
+	"on-click-right": "pavucontrol"
+}
+
+}

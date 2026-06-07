@@ -1,0 +1,11 @@
+# Captures / recordings / wallpapers (not config)
+*.png
+*.jpg
+*.jpeg
+*.mp4
+*.mkv
+
+# Editor / OS noise
+*.swp
+*~
+.DS_Store

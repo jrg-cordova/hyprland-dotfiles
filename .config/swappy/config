@@ -1,0 +1,4 @@
+[Default]
+save_dir=/home/jorge/pictures/screenshots
+save_filename_format=editada_%Y-%m-%d_%H-%M-%S.png
+show_panel=true
